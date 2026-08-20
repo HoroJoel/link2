@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Joel Aravena — Links</title>
+<meta name="description" content="Cursos, proyectos y redes de Joel Aravena." />
+<meta name="theme-color" content="#0b0b0e" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230b0b0e'/><text y='.9em' x='50%25' text-anchor='middle' font-size='62' font-family='sans-serif' font-weight='700' fill='%23ff7a1a'>J</text></svg>" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Joel Aravena — Links" />
+<meta property="og:description" content="Cursos, proyectos y redes." />
+<meta property="og:image" content="https://ik.imagekit.io/lrx068gs9l/Skauptech/Yo/IMG_5896.JPG?tr=w-1200,h-630,fo-auto" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://ik.imagekit.io" crossorigin />
+
+<style>
+  :root{
+    --bg:#0b0b0e;
+    --bg-2:#111116;
+    --card:#16161c;
+    --card-hover:#1d1d25;
+    --line:#26262f;
+    --line-hover:#ff7a1a;
+    --txt:#f4f4f6;
+    --txt-dim:#9a9aa6;
+    --accent:#ff7a1a;
+    --accent-2:#ffa04d;
+    --accent-soft:rgba(255,122,26,.12);
+    --radius:16px;
+    --maxw:640px;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+  html{-webkit-text-size-adjust:100%}
+
+  body{
+    min-height:100dvh;
+    background:var(--bg);
+    color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:clamp(24px,6vw,56px) clamp(16px,5vw,24px);
+    padding-bottom:calc(32px + env(safe-area-inset-bottom));
+    overflow-x:hidden;
+  }
+
+  /* Glow de fondo */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:-30% -30% auto -30%;
+    height:70vh;
+    background:
+      radial-gradient(50% 60% at 50% 0%, rgba(255,122,26,.22), transparent 70%),
+      radial-gradient(40% 50% at 15% 10%, rgba(255,160,77,.10), transparent 70%);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  .wrap{
+    position:relative;
+    z-index:1;
+    width:100%;
+    max-width:var(--maxw);
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+  }
+
+  /* ---------- Header ---------- */
+  header{text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px}
+
+  .avatar{
+    position:relative;
+    width:clamp(104px,28vw,132px);
+    aspect-ratio:1;
+    border-radius:50%;
+    padding:3px;
+    background:linear-gradient(140deg,var(--accent),var(--accent-2),#7a3a0d);
+    box-shadow:0 0 0 6px rgba(255,122,26,.08), 0 18px 40px -12px rgba(255,122,26,.45);
+    flex-shrink:0;
+  }
+  .avatar img,
+  .avatar .initials{
+    width:100%;height:100%;
+    border-radius:50%;
+    object-fit:cover;
+    display:block;
+    background:var(--bg-2);
+  }
+  .avatar .initials{
+    display:none;
+    place-items:center;
+    font-size:2.4rem;font-weight:700;
+    color:var(--accent);
+    letter-spacing:1px;
+  }
+  .avatar.no-photo img{display:none}
+  .avatar.no-photo .initials{display:grid}
+
+  .status{
+    position:absolute;bottom:6px;right:6px;
+    width:20px;height:20px;border-radius:50%;
+    background:#28c76f;border:3px solid var(--bg);
+  }
+
+  h1{font-size:clamp(1.5rem,6vw,1.9rem);font-weight:700;letter-spacing:-.02em}
+
+  .role{color:var(--accent);font-weight:600;font-size:.95rem}
+
+  .bio{color:var(--txt-dim);font-size:.95rem;max-width:44ch;text-wrap:balance}
+
+  /* ---------- Secciones ---------- */
+  section{display:flex;flex-direction:column;gap:12px}
+
+  .section-title{
+    display:flex;align-items:center;gap:10px;
+    font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--txt-dim);
+    padding-left:2px;
+  }
+  .section-title::after{content:"";flex:1;height:1px;background:var(--line)}
+
+  /* ---------- Link card ---------- */
+  .link{
+    position:relative;
+    display:flex;align-items:center;gap:14px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:14px 16px;
+    text-decoration:none;color:inherit;
+    transition:transform .18s ease, background-color .18s ease, border-color .18s ease, box-shadow .18s ease;
+    overflow:hidden;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .link::before{
+    content:"";
+    position:absolute;left:0;top:0;bottom:0;width:3px;
+    background:linear-gradient(var(--accent),var(--accent-2));
+    transform:scaleY(0);transform-origin:center;
+    transition:transform .18s ease;
+  }
+  .link:hover,.link:focus-visible{
+    background:var(--card-hover);
+    border-color:var(--line-hover);
+    transform:translateY(-2px);
+    box-shadow:0 12px 28px -14px rgba(255,122,26,.55);
+    outline:none;
+  }
+  .link:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .link:hover::before,.link:focus-visible::before{transform:scaleY(1)}
+  .link:active{transform:translateY(0) scale(.99)}
+
+  .ico{
+    flex-shrink:0;
+    width:42px;height:42px;
+    display:grid;place-items:center;
+    border-radius:12px;
+    background:var(--accent-soft);
+    border:1px solid rgba(255,122,26,.2);
+    color:var(--accent);
+  }
+  .ico svg{width:20px;height:20px;display:block}
+
+  .meta{flex:1;min-width:0}
+  .meta strong{display:block;font-size:.98rem;font-weight:600;line-height:1.3}
+  .meta span{display:block;font-size:.82rem;color:var(--txt-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+  .arrow{flex-shrink:0;color:var(--txt-dim);transition:transform .18s ease,color .18s ease}
+  .arrow svg{width:18px;height:18px;display:block}
+  .link:hover .arrow,.link:focus-visible .arrow{color:var(--accent);transform:translateX(3px)}
+
+  /* Destacado */
+  .link.featured{
+    background:linear-gradient(135deg,rgba(255,122,26,.16),rgba(255,122,26,.04));
+    border-color:rgba(255,122,26,.4);
+  }
+  .link.featured .ico{background:var(--accent);color:#12120f;border-color:transparent}
+
+  /* ---------- Vistas (links ⇄ proyectos) ---------- */
+  .view{display:flex;flex-direction:column;gap:28px}
+  .view[hidden]{display:none}
+  .view.is-out{
+    opacity:0;
+    transform:translateY(10px) scale(.97);
+    pointer-events:none;
+    transition:opacity .22s ease, transform .22s ease;
+  }
+  .view.is-in{animation:viewIn .34s cubic-bezier(.22,1,.36,1) both}
+  @keyframes viewIn{
+    from{opacity:0;transform:translateY(16px) scale(.97)}
+    to{opacity:1;transform:none}
+  }
+
+  /* Botón volver */
+  .back{
+    align-self:flex-start;
+    display:inline-flex;align-items:center;gap:6px;
+    background:var(--card);
+    border:1px solid var(--line);
+    color:var(--txt-dim);
+    font:inherit;font-size:.85rem;font-weight:600;
+    padding:8px 14px 8px 10px;
+    border-radius:999px;
+    cursor:pointer;
+    transition:color .18s ease,border-color .18s ease,background-color .18s ease,transform .18s ease;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .back svg{width:16px;height:16px}
+  .back:hover,.back:focus-visible{
+    color:var(--accent);border-color:var(--line-hover);
+    background:var(--card-hover);transform:translateX(-2px);outline:none;
+  }
+  .back:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+  /* Panel contenedor */
+  .work-panel{
+    display:flex;flex-direction:column;gap:14px;
+    padding:clamp(14px,4vw,20px);
+    border:1px solid rgba(255,122,26,.35);
+    border-radius:24px;
+    background:linear-gradient(160deg,rgba(255,122,26,.07),rgba(255,122,26,.01) 60%),var(--bg-2);
+    box-shadow:0 24px 60px -30px rgba(255,122,26,.6);
+  }
+
+  .work-title{
+    font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);padding-left:4px;
+  }
+
+  /* Tarjeta de proyecto */
+  .project{
+    position:relative;
+    display:flex;flex-direction:column;gap:12px;
+    padding:16px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:18px;
+    text-decoration:none;color:inherit;
+    transition:transform .18s ease,border-color .18s ease,background-color .18s ease,box-shadow .18s ease;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .project:hover,.project:focus-visible{
+    border-color:var(--line-hover);
+    background:var(--card-hover);
+    transform:translateY(-3px);
+    box-shadow:0 14px 30px -16px rgba(255,122,26,.6);
+    outline:none;
+  }
+  .project:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .project:active{transform:translateY(0) scale(.99)}
+
+  .project-top{display:flex;gap:13px;align-items:flex-start}
+  .project-ico{
+    flex-shrink:0;width:40px;height:40px;
+    display:grid;place-items:center;border-radius:12px;
+    background:var(--accent-soft);border:1px solid rgba(255,122,26,.22);
+    color:var(--accent);
+  }
+  .project-ico svg{width:20px;height:20px;display:block}
+
+  .project-body{min-width:0}
+  .project-body strong{display:block;font-size:1.02rem;font-weight:600;margin-bottom:3px}
+  .project-body span{display:block;font-size:.85rem;color:var(--txt-dim);line-height:1.45}
+
+  /* Entrada escalonada de las tarjetas */
+  @media (prefers-reduced-motion:no-preference){
+    .view.is-in .project{
+      animation:cardIn .45s cubic-bezier(.22,1,.36,1) both;
+      animation-delay:calc(.1s + var(--i) * .09s);
+    }
+    @keyframes cardIn{
+      from{opacity:0;transform:translateY(22px) scale(.96)}
+      to{opacity:1;transform:none}
+    }
+  }
+
+  footer{
+    text-align:center;color:var(--txt-dim);font-size:.78rem;
+    padding-top:8px;
+  }
+  footer a{color:var(--accent);text-decoration:none}
+  footer a:hover{text-decoration:underline}
+
+  /* ---------- Entrada animada ---------- */
+  @media (prefers-reduced-motion:no-preference){
+    .anim{animation:rise .55s cubic-bezier(.22,1,.36,1) both}
+    @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  }
+
+  /* ---------- Mobile fino ---------- */
+  @media (max-width:400px){
+    .link{padding:12px 13px;gap:12px}
+    .ico{width:38px;height:38px}
+    .ico svg{width:18px;height:18px}
+    .meta strong{font-size:.92rem}
+    .meta span{font-size:.78rem}
+  }
+
+  /* Pantallas grandes: dos columnas para cursos/proyectos */
+  @media (min-width:720px){
+    :root{--maxw:680px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ============ HEADER ============ -->
+  <header class="anim">
+    <div class="avatar" id="avatar">
+      <img src="https://ik.imagekit.io/lrx068gs9l/Skauptech/Yo/IMG_5896.JPG?tr=w-400,h-400,fo-auto"
+           alt="Foto de Joel Aravena" width="400" height="400" fetchpriority="high"
+           onerror="document.getElementById('avatar').classList.add('no-photo')" />
+      <div class="initials" aria-hidden="true">JA</div>
+      <span class="status" title="Disponible" aria-label="Disponible"></span>
+    </div>
+
+    <div>
+      <h1>Joel Aravena</h1>
+      <p class="role">Desarrollador &amp; Educador</p>
+    </div>
+
+    <p class="bio">Construyo productos web y comparto lo que aprendo. Acá están mis cursos, proyectos y redes.</p>
+  </header>
+
+  <!-- ============ VISTA: LINKS ============ -->
+  <div class="view" id="view-home">
+
+  <!-- ============ CURSOS ============ -->
+  <section class="anim" style="animation-delay:.06s">
+    <h2 class="section-title">Cursos</h2>
+
+    <a class="link featured" href="https://cursos-delta.vercel.app/courses" target="_blank" rel="noopener">
+      <span class="ico" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      </span>
+      <span class="meta">
+        <strong>Curso destacado</strong>
+        <span>Programa completo, de cero a proyecto final</span>
+      </span>
+      <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
+    </a>
+
+  </section>
+
+  <!-- ============ PROYECTOS ============ -->
+  <section class="anim" style="animation-delay:.12s">
+    <h2 class="section-title">Proyectos</h2>
+
+    <a class="link" href="#proyectos" id="btn-portfolio" aria-controls="view-work" aria-expanded="false">
+      <span class="ico" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      </span>
+      <span class="meta">
+        <strong>Portfolio</strong>
+        <span>Trabajos seleccionados y casos de estudio</span>
+      </span>
+      <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
+    </a>
+
+  </section>
+
+  <!-- ============ CONTACTO / REDES ============ -->
+  <section class="anim" style="animation-delay:.18s">
+    <h2 class="section-title">Contacto</h2>
+
+    <a class="link" href="https://www.linkedin.com/in/joelaravena" target="_blank" rel="noopener">
+      <span class="ico" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.4 8.65 22 11 22 14.2V21h-4v-6c0-1.43-.03-3.27-2-3.27-2 0-2.3 1.56-2.3 3.17V21h-4V9Z"/></svg>
+      </span>
+      <span class="meta">
+        <strong>LinkedIn</strong>
+        <span>Experiencia profesional y networking</span>
+      </span>
+      <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
+    </a>
+
+    <a class="link" href="mailto:contacto@joelaravena.com">
+      <span class="ico" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+      </span>
+      <span class="meta">
+        <strong>Email</strong>
+        <span>contacto@joelaravena.com</span>
+      </span>
+      <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
+    </a>
+  </section>
+
+  </div><!-- /view-home -->
+
+  <!-- ============ VISTA: PROYECTOS ============ -->
+  <div class="view" id="view-work" hidden>
+    <button class="back" id="btn-back" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+      Volver
+    </button>
+
+    <div class="work-panel">
+      <h2 class="work-title">Proyectos principales</h2>
+
+      <article class="project" style="--i:0">
+        <span class="project-top">
+          <span class="project-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </span>
+          <span class="project-body">
+            <strong>Plataforma de cursos</strong>
+            <span>Catálogo de cursos online con lecciones en video, inscripción y seguimiento del progreso del alumno.</span>
+          </span>
+        </span>
+      </article>
+
+      <article class="project" style="--i:1">
+        <span class="project-top">
+          <span class="project-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>
+          </span>
+          <span class="project-body">
+            <strong>Experiencia Desconexión</strong>
+            <span>Sitio de arriendo de cabaña: galería, disponibilidad y reservas directas para desconectarse en la naturaleza.</span>
+          </span>
+        </span>
+      </article>
+
+      <article class="project" style="--i:2">
+        <span class="project-top">
+          <span class="project-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8"/><path d="M12 3a15 15 0 0 0 0 18 15 15 0 0 0 0-18Z"/></svg>
+          </span>
+          <span class="project-body">
+            <strong>Fotos de la NASA</strong>
+            <span>App que consume la API pública de la NASA para explorar la imagen astronómica del día y fotos de Marte.</span>
+          </span>
+        </span>
+      </article>
+    </div>
+  </div><!-- /view-work -->
+
+  <footer class="anim" style="animation-delay:.24s">
+    © <span id="year">2026</span> Joel Aravena · Hecho con <span style="color:var(--accent)">♦</span> y café
+  </footer>
+
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---------- Navegación links ⇄ proyectos ---------- */
+  (function () {
+    var home  = document.getElementById('view-home');
+    var work  = document.getElementById('view-work');
+    var btn   = document.getElementById('btn-portfolio');
+    var back  = document.getElementById('btn-back');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var OUT = reduce ? 0 : 220;
+    var busy = false;
+    var fromHome = false;
+
+    function swap(to, from, focusEl) {
+      if (busy || from.hidden) return;
+      busy = true;
+      from.classList.add('is-out');
+      setTimeout(function () {
+        from.hidden = true;
+        from.classList.remove('is-out', 'is-in');
+        to.hidden = false;
+        void to.offsetWidth;               // reinicia la animación de entrada
+        to.classList.add('is-in');
+        window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+        if (focusEl) focusEl.focus({ preventScroll: true });
+        busy = false;
+      }, OUT);
+    }
+
+    function route() {
+      if (location.hash === '#proyectos') {
+        btn.setAttribute('aria-expanded', 'true');
+        swap(work, home, back);
+      } else {
+        btn.setAttribute('aria-expanded', 'false');
+        swap(home, work, btn);
+      }
+    }
+
+    btn.addEventListener('click', function () { fromHome = true; });
+
+    back.addEventListener('click', function () {
+      if (fromHome) history.back();        // conserva el historial del navegador
+      else location.hash = '';
+    });
+
+    window.addEventListener('hashchange', route);
+
+    // Estado inicial (sin animación ni foco si se entra directo a #proyectos)
+    if (location.hash === '#proyectos') {
+      home.hidden = true;
+      work.hidden = false;
+      work.classList.add('is-in');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  })();
+</script>
+</body>
+</html>
