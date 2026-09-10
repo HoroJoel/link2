@@ -1,6 +1,5 @@
 import Avatar from "./components/Avatar";
 import Views from "./components/Views";
-import Year from "./components/Year";
 
 export default function Home() {
   return (
@@ -21,11 +20,6 @@ export default function Home() {
       </header>
 
       <Views />
-
-      <footer className="anim" style={{ animationDelay: ".24s" }}>
-        © <Year initial={new Date().getFullYear()} /> Joel Aravena · Hecho con{" "}
-        <span style={{ color: "var(--accent)" }}>♦</span> y café
-      </footer>
     </div>
   );
 }

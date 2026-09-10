@@ -20,6 +20,7 @@ export type Project = {
   title: string;
   description: string;
   icon: ReactNode;
+  href?: string;
 };
 
 export const courses: LinkItem[] = [
@@ -59,13 +60,15 @@ export const projects: Project[] = [
   {
     title: "Experiencia Desconexión",
     description:
-      "Sitio de arriendo de cabaña: galería, disponibilidad y reservas directas para desconectarse en la naturaleza.",
+      "¿Necesitas desconectar de la ciudad? Ven a descansar entre cerros, mar y bosques en Laguna Verde. Te invitamos a la desconexión.",
     icon: <HouseIcon />,
+    href: "https://www.airbnb.cl/rooms/1369827108670997313?check_in=2026-09-25&check_out=2026-09-30&guests=1&adults=1&s=67&unique_share_id=e3d1c362-3c90-46c8-b082-c640ada49b45",
   },
   {
-    title: "Fotos de la NASA",
+    title: "¿Necesitas un código QR?",
     description:
-      "App que consume la API pública de la NASA para explorar la imagen astronómica del día y fotos de Marte.",
+      "Te dejo aquí un proyecto personal: un generador gratuito de códigos QR para URL, WiFi, ubicación, email, SMS y teléfono.",
     icon: <GlobeIcon />,
+    href: "https://freeqrxyou.vercel.app/",
   },
 ];

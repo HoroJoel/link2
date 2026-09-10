@@ -66,7 +66,6 @@ header{text-align:center;display:flex;flex-direction:column;align-items:center;g
   border-radius:50%;
   padding:3px;
   background:linear-gradient(140deg,var(--accent),var(--accent-2),#7a3a0d);
-  box-shadow:0 0 0 6px rgba(255,122,26,.08), 0 18px 40px -12px rgba(255,122,26,.45);
   flex-shrink:0;
 }
 .avatar img,

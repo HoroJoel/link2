@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
-import { contact, courses, projects, type LinkItem } from "../data";
+import { contact, courses, projects, type LinkItem, type Project } from "../data";
 import { Arrow, BriefcaseIcon, ChevronLeftIcon } from "./icons";
 
 type View = "home" | "work";
@@ -25,6 +25,29 @@ function LinkCard({ item }: { item: LinkItem }) {
       </span>
       <Arrow />
     </a>
+  );
+}
+
+function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const content = (
+    <span className="project-top">
+      <span className="project-ico" aria-hidden="true">
+        {project.icon}
+      </span>
+      <span className="project-body">
+        <strong>{project.title}</strong>
+        <span>{project.description}</span>
+      </span>
+    </span>
+  );
+  const props = { className: "project", style: { "--i": index } as CSSProperties };
+
+  return project.href ? (
+    <a {...props} href={project.href} target="_blank" rel="noopener">
+      {content}
+    </a>
+  ) : (
+    <article {...props}>{content}</article>
   );
 }
 
@@ -151,21 +174,7 @@ export default function Views() {
           <h2 className="work-title">Proyectos principales</h2>
 
           {projects.map((project, i) => (
-            <article
-              key={project.title}
-              className="project"
-              style={{ "--i": i } as CSSProperties}
-            >
-              <span className="project-top">
-                <span className="project-ico" aria-hidden="true">
-                  {project.icon}
-                </span>
-                <span className="project-body">
-                  <strong>{project.title}</strong>
-                  <span>{project.description}</span>
-                </span>
-              </span>
-            </article>
+            <ProjectCard key={project.title} project={project} index={i} />
           ))}
         </div>
       </div>
