@@ -5,6 +5,7 @@ import {
   HouseIcon,
   LinkedInIcon,
   MailIcon,
+  SpaceIcon,
 } from "./components/icons";
 
 export type LinkItem = {
@@ -70,5 +71,11 @@ export const projects: Project[] = [
       "Te dejo aquí un proyecto personal: un generador gratuito de códigos QR para URL, WiFi, ubicación, email, SMS y teléfono.",
     icon: <GlobeIcon />,
     href: "https://freeqrxyou.vercel.app/",
+  },
+  {
+    title: "NASA Photo",
+    description: "Galería de fotos espaciales para explorar imágenes del universo.",
+    icon: <SpaceIcon />,
+    href: "https://nasa-photo-mu.vercel.app/",
   },
 ];

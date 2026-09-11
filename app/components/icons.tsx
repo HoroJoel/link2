@@ -56,6 +56,17 @@ export function MailIcon(props: IconProps) {
   );
 }
 
+export function SpaceIcon(props: IconProps) {
+  return (
+    <svg {...stroke} {...props}>
+      <circle cx="12" cy="12" r="3" />
+      <path d="M19.4 15a9 9 0 0 0 0-6M4.6 9a9 9 0 0 0 0 6" />
+      <path d="M15 19.4a9 9 0 0 0-6 0M9 4.6a9 9 0 0 0 6 0" />
+      <path d="M5 5h.01M19 19h.01" />
+    </svg>
+  );
+}
+
 export function ChevronRightIcon(props: IconProps) {
   return (
     <svg {...stroke} {...props}>
