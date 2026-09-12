@@ -57,6 +57,7 @@ export const projects: Project[] = [
     description:
       "Catálogo de cursos online con lecciones en video, inscripción y seguimiento del progreso del alumno.",
     icon: <GraduationIcon />,
+    href: "https://cursos-delta.vercel.app/courses",
   },
   {
     title: "Experiencia Desconexión",

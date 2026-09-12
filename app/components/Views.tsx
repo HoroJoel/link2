@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
+import { track } from "@vercel/analytics";
 import { contact, courses, projects, type LinkItem, type Project } from "../data";
 import { Arrow, BriefcaseIcon, ChevronLeftIcon } from "./icons";
 
@@ -9,11 +10,16 @@ type View = "home" | "work";
 const HASH = "#proyectos";
 const OUT_MS = 220;
 
+function trackButtonClick(label: string) {
+  track("button_click", { label });
+}
+
 function LinkCard({ item }: { item: LinkItem }) {
   return (
     <a
       className={item.featured ? "link featured" : "link"}
       href={item.href}
+      onClick={() => trackButtonClick(item.title)}
       {...(item.external ? { target: "_blank", rel: "noopener" } : {})}
     >
       <span className="ico" aria-hidden="true">
@@ -43,7 +49,13 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   const props = { className: "project", style: { "--i": index } as CSSProperties };
 
   return project.href ? (
-    <a {...props} href={project.href} target="_blank" rel="noopener">
+    <a
+      {...props}
+      href={project.href}
+      target="_blank"
+      rel="noopener"
+      onClick={() => trackButtonClick(project.title)}
+    >
       {content}
     </a>
   ) : (
@@ -141,6 +153,7 @@ export default function Views() {
             aria-controls="view-work"
             aria-expanded={view === "work"}
             onClick={() => {
+              trackButtonClick("Portfolio");
               fromHome.current = true;
             }}
           >
@@ -165,7 +178,16 @@ export default function Views() {
 
       {/* ============ VISTA: PROYECTOS ============ */}
       <div className={classFor("work")} id="view-work" hidden={shown !== "work"}>
-        <button ref={backRef} className="back" id="btn-back" type="button" onClick={onBack}>
+        <button
+          ref={backRef}
+          className="back"
+          id="btn-back"
+          type="button"
+          onClick={() => {
+            trackButtonClick("Volver");
+            onBack();
+          }}
+        >
           <ChevronLeftIcon />
           Volver
         </button>
