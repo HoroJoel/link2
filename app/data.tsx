@@ -60,11 +60,18 @@ export const projects: Project[] = [
     href: "https://cursos-delta.vercel.app/courses",
   },
   {
-    title: "Experiencia Desconexión",
+    title: "Renta corta · Experiencia inmersiva 3D",
     description:
-      "¿Necesitas desconectar de la ciudad? Ven a descansar entre cerros, mar y bosques en Laguna Verde. Te invitamos a la desconexión.",
+      "Una aproximación en 3D a la experiencia inmersiva que vivirán los huéspedes en tu alojamiento de renta corta. Proyecto aún en desarrollo.",
     icon: <HouseIcon />,
-    href: "https://www.airbnb.cl/rooms/1369827108670997313?check_in=2026-09-25&check_out=2026-09-30&guests=1&adults=1&s=67&unique_share_id=e3d1c362-3c90-46c8-b082-c640ada49b45",
+    href: "https://web-casa-renta-corta-3d.vercel.app/",
+  },
+  {
+    title: "Laguna Verde · Guía turística",
+    description:
+      "Una guía turística para descubrir Laguna Verde y planificar tu visita.",
+    icon: <GlobeIcon />,
+    href: "https://www.lagunaverde.info/",
   },
   {
     title: "¿Necesitas un código QR?",
@@ -78,5 +85,12 @@ export const projects: Project[] = [
     description: "Galería de fotos espaciales para explorar imágenes del universo.",
     icon: <SpaceIcon />,
     href: "https://nasa-photo-mu.vercel.app/",
+  },
+  {
+    title: "Data Recording · Demo de app móvil",
+    description:
+      "Demo de mi app móvil para registrar datos de los sensores del celular y visualizarlos para investigación o actividades personales.",
+    icon: <GlobeIcon />,
+    href: "https://app-data-recording-landing.vercel.app/",
   },
 ];
