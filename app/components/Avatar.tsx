@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 const PHOTO =
-  "https://ik.imagekit.io/lrx068gs9l/Skauptech/Yo/IMG_5896.JPG?tr=w-400,h-400,fo-auto";
+  "https://ik.imagekit.io/lrx068gs9l/Skauptech/Yo/89455339-49A7-4BE9-9DB8-F81050999ADA%20(1).png?tr=w-400,h-400,fo-auto";
 
 export default function Avatar() {
   const [failed, setFailed] = useState(false);
