@@ -166,6 +166,64 @@ section{display:flex;flex-direction:column;gap:12px}
 }
 .link.featured .ico{background:var(--accent);color:#12120f;border-color:transparent}
 
+/* ---------- Boletín ---------- */
+.newsletter{
+  display:flex;flex-direction:column;gap:12px;
+  padding:16px;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+}
+.newsletter label{font-size:.85rem;font-weight:600}
+.newsletter-fields{
+  display:flex;flex-direction:column;gap:12px;
+  border:0;padding:0;margin:0;min-width:0;
+}
+.newsletter-help{margin:0;color:var(--txt-dim);font-size:.85rem;line-height:1.5}
+.newsletter-feedback{
+  margin:0;padding:12px 14px;border:1px solid var(--accent);
+  border-radius:10px;background:var(--bg-2);font-size:.9rem;line-height:1.5;
+}
+.newsletter-error{border-color:#ed9292}
+.newsletter-fields:disabled{opacity:.7}
+.newsletter-fields:disabled .newsletter-button{cursor:wait}
+.newsletter-input{
+  width:100%;min-width:0;
+  padding:12px 14px;
+  background:var(--bg-2);
+  border:1px solid var(--line);
+  border-radius:10px;
+  color:var(--txt);
+  font:inherit;
+}
+.newsletter-input::placeholder{color:var(--txt-dim)}
+.newsletter-message{resize:vertical;min-height:110px}
+.newsletter-button{
+  padding:12px 18px;
+  background:var(--accent);color:#12120f;
+  border:1px solid transparent;border-radius:10px;
+  font:inherit;font-weight:600;cursor:pointer;
+}
+.newsletter-button:hover{filter:brightness(1.08)}
+.newsletter-button:focus-visible{
+  outline:2px solid var(--accent);outline-offset:3px;
+}
+.newsletter-input:focus-visible{
+  border-color:var(--accent);
+  outline:2px solid var(--accent);outline-offset:3px;
+}
+.newsletter .newsletter-consent{
+  display:flex;align-items:flex-start;gap:10px;
+  font-weight:400;line-height:1.5;cursor:pointer;
+}
+.newsletter-consent input{
+  flex-shrink:0;width:18px;height:18px;margin:2px 0 0;
+  accent-color:var(--accent);cursor:pointer;
+}
+.newsletter-consent input:focus-visible{
+  outline:2px solid var(--accent);outline-offset:3px;
+}
+
 /* ---------- Vistas (links ⇄ proyectos) ---------- */
 .view{display:flex;flex-direction:column;gap:28px}
 .view[hidden]{display:none}
@@ -286,7 +344,7 @@ footer a:hover{text-decoration:underline}
   .meta span{font-size:.78rem}
 }
 
-/* Pantallas grandes: dos columnas para cursos/proyectos */
+/* Pantallas grandes: dos columnas para talleres/proyectos */
 @media (min-width:720px){
   :root{--maxw:680px}
 }

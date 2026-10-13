@@ -3,8 +3,8 @@ import {
   GlobeIcon,
   GraduationIcon,
   HouseIcon,
+  InstagramIcon,
   LinkedInIcon,
-  MailIcon,
   SpaceIcon,
 } from "./components/icons";
 
@@ -24,9 +24,9 @@ export type Project = {
   href?: string;
 };
 
-export const courses: LinkItem[] = [
+export const workshops: LinkItem[] = [
   {
-    title: "Curso destacado",
+    title: "Taller destacado",
     subtitle: "Programa completo, de cero a proyecto final",
     href: "https://cursos-delta.vercel.app/courses",
     icon: <GraduationIcon />,
@@ -37,25 +37,26 @@ export const courses: LinkItem[] = [
 
 export const contact: LinkItem[] = [
   {
+    title: "Instagram",
+    subtitle: "@joeee.dev",
+    href: "https://www.instagram.com/joeee.dev/",
+    icon: <InstagramIcon />,
+    external: true,
+  },
+  {
     title: "LinkedIn",
     subtitle: "Experiencia profesional y networking",
     href: "https://www.linkedin.com/in/joelaravena",
     icon: <LinkedInIcon />,
     external: true,
   },
-  {
-    title: "Email",
-    subtitle: "contacto@joelaravena.com",
-    href: "mailto:contacto@joelaravena.com",
-    icon: <MailIcon />,
-  },
 ];
 
 export const projects: Project[] = [
   {
-    title: "Plataforma de cursos",
+    title: "Plataforma de talleres",
     description:
-      "Catálogo de cursos online con lecciones en video, inscripción y seguimiento del progreso del alumno.",
+      "Catálogo de talleres online con lecciones en video, inscripción y seguimiento del progreso del alumno.",
     icon: <GraduationIcon />,
     href: "https://cursos-delta.vercel.app/courses",
   },

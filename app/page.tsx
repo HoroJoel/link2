@@ -14,7 +14,7 @@ export default function Home() {
         </div>
 
         <p className="bio">
-          Construyo productos web y comparto lo que aprendo. Acá están mis cursos,
+          Construyo productos web y comparto lo que aprendo. Acá están mis talleres,
           proyectos y redes.
         </p>
       </header>

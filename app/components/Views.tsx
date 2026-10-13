@@ -1,8 +1,8 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
+import { useCallback, useEffect, useRef, useState, type CSSProperties, type FormEvent } from "react";
 import { track } from "@vercel/analytics";
-import { contact, courses, projects, type LinkItem, type Project } from "../data";
+import { contact, workshops, projects, type LinkItem, type Project } from "../data";
 import { Arrow, BriefcaseIcon, ChevronLeftIcon } from "./icons";
 
 type View = "home" | "work";
@@ -67,6 +67,52 @@ export default function Views() {
   const [view, setView] = useState<View>("home");
   const [outView, setOutView] = useState<View | null>(null);
   const [entering, setEntering] = useState(false);
+  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [formError, setFormError] = useState("");
+  const submitting = useRef(false);
+
+  async function onSubscribe(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (submitting.current) return;
+    const form = event.currentTarget;
+    const fields = new FormData(form);
+    const nombre = String(fields.get("name") ?? "").trim();
+    if (!nombre) {
+      setFormError("Escribe tu nombre para continuar.");
+      setFormStatus("error");
+      form.querySelector<HTMLInputElement>("#newsletter-name")?.focus();
+      return;
+    }
+    submitting.current = true;
+    setFormStatus("sending");
+    setFormError("");
+    try {
+      const response = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nombre,
+          email: String(fields.get("email") ?? "").trim(),
+          consent: fields.get("emailConsent") === "accepted",
+          mensaje: String(fields.get("message") ?? "").trim(),
+        }),
+        signal: AbortSignal.timeout(20000),
+      });
+      const result = await response.json();
+      if (!response.ok || result.success !== true) {
+        throw new Error(result.error || "No pudimos completar el envío. Inténtalo nuevamente.");
+      }
+      form.reset();
+      setFormStatus("success");
+    } catch (error) {
+      setFormError(error instanceof Error && error.message && error.name === "Error"
+        ? error.message
+        : "No pudimos confirmar el envío. Revisa tu conexión y espera un momento antes de reintentar.");
+      setFormStatus("error");
+    } finally {
+      submitting.current = false;
+    }
+  }
 
   const portfolioRef = useRef<HTMLAnchorElement>(null);
   const backRef = useRef<HTMLButtonElement>(null);
@@ -136,9 +182,9 @@ export default function Views() {
     <>
       {/* ============ VISTA: LINKS ============ */}
       <div className={classFor("home")} id="view-home" hidden={shown !== "home"}>
-        <section className="anim" style={{ animationDelay: ".06s" }}>
-          <h2 className="section-title">Cursos</h2>
-          {courses.map((item) => (
+        <section id="talleres" className="anim" style={{ animationDelay: ".06s" }}>
+          <h2 className="section-title">Talleres</h2>
+          {workshops.map((item) => (
             <LinkCard key={item.title} item={item} />
           ))}
         </section>
@@ -173,6 +219,66 @@ export default function Views() {
           {contact.map((item) => (
             <LinkCard key={item.title} item={item} />
           ))}
+        </section>
+
+        <section className="anim" style={{ animationDelay: ".24s" }}>
+          <h2 className="section-title">Boletín informativo</h2>
+          <form className="newsletter" onSubmit={onSubscribe} aria-busy={formStatus === "sending"}>
+            <p className="newsletter-help">Recibe novedades y cuéntame qué te gustaría aprender. Todos los campos son obligatorios, excepto el mensaje.</p>
+            <fieldset className="newsletter-fields" disabled={formStatus === "sending"}>
+            <label htmlFor="newsletter-name">Tu nombre</label>
+            <input
+              className="newsletter-input"
+              id="newsletter-name"
+              name="name"
+              type="text"
+              maxLength={120}
+              required
+              autoComplete="name"
+              placeholder="Escribe tu nombre"
+            />
+            <label htmlFor="newsletter-email">Correo</label>
+            <input
+              className="newsletter-input"
+              id="newsletter-email"
+              name="email"
+              type="email"
+              maxLength={254}
+              required
+              autoComplete="email"
+              placeholder="tu@correo.com"
+            />
+            <label htmlFor="newsletter-message">Mensaje (opcional)</label>
+            <textarea
+              className="newsletter-input newsletter-message"
+              id="newsletter-message"
+              name="message"
+              rows={4}
+              maxLength={2000}
+              aria-describedby="newsletter-message-help"
+              placeholder="Escribe tu mensaje"
+            />
+            <p className="newsletter-help" id="newsletter-message-help">Puedes escribir hasta 2000 caracteres.</p>
+            <label className="newsletter-consent" htmlFor="newsletter-consent">
+              <input
+                id="newsletter-consent"
+                name="emailConsent"
+                type="checkbox"
+                value="accepted"
+                required
+              />
+              <span>Autorizo a enviarme el boletín informativo por correo electrónico.</span>
+            </label>
+            <button className="newsletter-button" type="submit">
+              {formStatus === "sending" ? "Enviando…" : formStatus === "error" ? "Volver a intentar" : "Enviar"}
+            </button>
+            </fieldset>
+            <div role="status" aria-live="polite" aria-atomic="true">
+              {formStatus === "sending" && <p className="newsletter-help">Estamos enviando tu formulario…</p>}
+              {formStatus === "success" && <p className="newsletter-feedback">¡Gracias! Recibimos tus datos correctamente.</p>}
+            </div>
+            {formStatus === "error" && <p className="newsletter-feedback newsletter-error" role="alert">{formError}</p>}
+          </form>
         </section>
       </div>
 

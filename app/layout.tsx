@@ -5,17 +5,13 @@ import "./globals.css";
 
 const META_PIXEL_ID = "1065548809389554";
 
-const FAVICON =
-  "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230b0b0e'/><text y='.9em' x='50%25' text-anchor='middle' font-size='62' font-family='sans-serif' font-weight='700' fill='%23ff7a1a'>J</text></svg>";
-
 export const metadata: Metadata = {
   title: "Joel Aravena — Links",
-  description: "Cursos, proyectos y redes de Joel Aravena.",
-  icons: { icon: FAVICON },
+  description: "Talleres, proyectos y redes de Joel Aravena.",
   openGraph: {
     type: "website",
     title: "Joel Aravena — Links",
-    description: "Cursos, proyectos y redes.",
+    description: "Talleres, proyectos y redes.",
     images: [
       "https://ik.imagekit.io/lrx068gs9l/Skauptech/Yo/IMG_5896.JPG?tr=w-1200,h-630,fo-auto",
     ],
