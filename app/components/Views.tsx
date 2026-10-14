@@ -221,7 +221,7 @@ export default function Views() {
           ))}
         </section>
 
-        <section className="anim" style={{ animationDelay: ".24s" }}>
+        {/* <section className="anim" style={{ animationDelay: ".24s" }}>
           <h2 className="section-title">Boletín informativo</h2>
           <form className="newsletter" onSubmit={onSubscribe} aria-busy={formStatus === "sending"}>
             <p className="newsletter-help">Recibe novedades y cuéntame qué te gustaría aprender. Todos los campos son obligatorios, excepto el mensaje.</p>
@@ -279,7 +279,7 @@ export default function Views() {
             </div>
             {formStatus === "error" && <p className="newsletter-feedback newsletter-error" role="alert">{formError}</p>}
           </form>
-        </section>
+        </section> */}
       </div>
 
       {/* ============ VISTA: PROYECTOS ============ */}
